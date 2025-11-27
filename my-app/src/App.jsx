@@ -1,5 +1,8 @@
-import React from "react";
+import { React, useState} from "react";
 import ReactDOM from "react-dom/client";
+import Clicker from "./Clicker";
+import Horloge from "./Horloge";
+import Billy from "./Billy";
 
 // import {Main} from "./Main";      // Import du composant App
 // import { Eleve } from "./Eleve";
@@ -8,25 +11,37 @@ import ReactDOM from "react-dom/client";
 // root.render(<Main/>);            // Appel du composant App
 // root.render(<App/>);
 
-const nom = "Siri";
-const date = new Date();
-const datefr = new Intl.DateTimeFormat("fr-FR").format(date);
-// const str = date.getHours();
-const localTime = datefr.toString();
-const hourTime = date.getHours();
-const minutes =date.getMinutes();
-
-const pokemon = {
-    name:"Mew",
-    image:"http://unsplash.it/100/200",
-    pokeId:151
-};
-
 
 function App () {
-  return <h1>Hello, {nom} et nous sommes le {datefr} {hourTime}h {minutes}
-   <img src={pokemon.image} alt={pokemon.name}/>  {pokemon.name}{pokemon.pokeId}
+  
+  const nom = "Siri";
+  const date = new Date();
+  const datefr = new Intl.DateTimeFormat("fr-FR").format(date);
+  // const str = date.getHours();
+  const localTime = datefr.toString();
+  const hourTime = date.getHours();
+  const minutes =date.getMinutes();
+  
+  const pokemon = {
+      name:"Mew",
+      image:"http://unsplash.it/100/200",
+      pokeId:151
+  };
+  return (
+    <div className="centrer">
+  <h1>Hello, {nom} et nous sommes le {datefr} {hourTime}h {minutes}
   </h1>
+  <h2> {pokemon.name}</h2>
+     
+<img className="pokemon" src={pokemon.image} alt={pokemon.name}/> 
+     <h3>{pokemon.pokeId}</h3>
+       <Clicker/>
+       <Horloge/>
+       <Billy/>
+    </div>
+  ) 
+  
+
      
   ;
 }

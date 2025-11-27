@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    color: white;
+	font-family: 'Source Code Pro', monospace;
+}
+
+.centrer{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 50px;
+    gap: 5em;
+}
+
+.pokemon {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+button {
+    padding: 50px;
+    border-radius: 50%;
+}
+
+
+/* Horloge css ce n'est pas de moi */
+
+.box {
+	position: absolute;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+.container {
+	width: 320px;
+}
+.clock {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.06);
+	-webkit-backdrop-filter: blur(15px);
+	backdrop-filter: blur(15px);
+	padding: 50px 25px;
+	-webkit-box-shadow: 0 25px 23px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 25px 23px rgba(0, 0, 0, 0.15);
+	border: 1.5px solid rgba(255, 255, 255, 0.06);
+	border-radius: 8px;
+}
+
+.shape1 {
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	background: -o-linear-gradient(315deg, #ff5b84, #eb3461);
+	background: linear-gradient(135deg, #ff5b84, #eb3461);
+	border-radius: 50%;
+	bottom: 130px;
+	right: -50px;
+	z-index: -1;
+}
+.shape2 {
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	background: -o-linear-gradient(315deg, #426cf8, #3ebdf0);
+	background: linear-gradient(135deg, #426cf8, #3ebdf0);
+	border-radius: 50%;
+	top: 100px;
+	left: -50px;
+	z-index: -1;
+}
+
+.wrapper {
+	text-align: center;
+}
+#time {
+	font-size: 40px;
+	display: inline-block;
+}
+
+/* Avatar Billy */
+
+
+.card{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	border-radius: 0.75rem;
+	border: 1px solid white;
+	gap: 4em;
+	padding: 150px;
+}
