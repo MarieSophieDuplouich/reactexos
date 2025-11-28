@@ -68,13 +68,17 @@ function ProductTable({ products, filterText, inStockOnly, filterPrice}) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category} />
+          key={product.category} 
+             price={product.price}
+          />
       );
     }
     rows.push(
       <ProductRow
         product={product}
-        key={product.name} />
+        key={product.name} 
+        price={product.price}
+        />
     );
     lastCategory = product.category;
   });
