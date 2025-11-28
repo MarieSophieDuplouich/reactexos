@@ -3,6 +3,8 @@ import { useState } from 'react';
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
+  //prix
+  const [filterPrice, setfilterPrice ] = useState(false);
 
   return (
     <div>
@@ -10,11 +12,15 @@ function FilterableProductTable({ products }) {
         filterText={filterText} 
         inStockOnly={inStockOnly} 
         onFilterTextChange={setFilterText} 
-        onInStockOnlyChange={setInStockOnly} />
+        onInStockOnlyChange={setInStockOnly} 
+        filterPrice={setFilterPrice}
+        />
       <ProductTable 
         products={products} 
         filterText={filterText}
-        inStockOnly={inStockOnly} />
+        inStockOnly={inStockOnly} 
+         filterPrice={filterPrice}
+        />
     </div>
   );
 }
@@ -43,7 +49,7 @@ function ProductRow({ product }) {
   );
 }
 
-function ProductTable({ products, filterText, inStockOnly }) {
+function ProductTable({ products, filterText, inStockOnly, filterPrice}) {
   const rows = [];
   let lastCategory = null;
 
@@ -90,7 +96,8 @@ function SearchBar({
   filterText,
   inStockOnly,
   onFilterTextChange,
-  onInStockOnlyChange
+  onInStockOnlyChange,
+  filterPrice
 }) {
   return (
     <form>
@@ -98,6 +105,9 @@ function SearchBar({
         type="text" 
         value={filterText} placeholder="Search..." 
         onChange={(e) => onFilterTextChange(e.target.value)} />
+        <input  type="price" 
+        value={filterPrice} placeholder="Search..." 
+        onChange={(e) => filterPrice(e.target.value)} />
       <label>
         <input 
           type="checkbox" 
