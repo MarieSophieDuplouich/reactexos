@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import Clicker from "./Clicker";
 import Horloge from "./Horloge";
 import Billy from "./Billy";
-
+import Chronometre from "./Chronometre";
+import FilterableProductTable from "./FilterableProductTable";
 // import {Main} from "./Main";      // Import du composant App
 // import { Eleve } from "./Eleve";
 
@@ -38,6 +39,8 @@ function App () {
        <Clicker/>
        <Horloge/>
        <Billy/>
+       <Chronometre/>
+       <FilterableProductTable/>
     </div>
   ) 
   
