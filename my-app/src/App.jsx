@@ -13,7 +13,7 @@ import FilterableProductTable from "./FilterableProductTable";
 // root.render(<App/>);
 
 
-function App () {
+function App ({pokemons}) {
   
   const nom = "Siri";
   const date = new Date();
@@ -23,24 +23,34 @@ function App () {
   const hourTime = date.getHours();
   const minutes =date.getMinutes();
   
-  const pokemon = {
-      name:"Mew",
-      image:"http://unsplash.it/100/200",
-      pokeId:151
-  };
+  // const pokemon = {
+  //     name:"Mew",
+  //     image:"http://unsplash.it/100/200",
+  //     pokeId:151
+  // };
   return (
     <div className="centrer">
   <h1>Hello, {nom} et nous sommes le {datefr} {hourTime}h {minutes}
   </h1>
-  <h2> {pokemon.name}</h2>
+  {/* <h2> {pokemon.name}</h2> */}
      
-<img className="pokemon" src={pokemon.image} alt={pokemon.name}/> 
-     <h3>{pokemon.pokeId}</h3>
+{/* <img className="pokemon" src={pokemon.image} alt={pokemon.name}/> 
+     <h3>{pokemon.pokeId}</h3> */}
        <Clicker/>
        <Horloge/>
        <Billy/>
        <Chronometre/>
        <FilterableProductTable/>
+
+        <div className="pokemon-list">
+        {pokemons.map(poke => (
+          <div key={poke.id} className="pokemon-card">
+            <h3>{poke.name}</h3>
+            <img src={poke.image} alt={poke.name} />
+            <p>ID : {poke.pokedexId}</p>
+          </div>
+        ))}
+      </div>
     </div>
   ) 
   
