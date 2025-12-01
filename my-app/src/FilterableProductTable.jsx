@@ -4,23 +4,24 @@ function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
   //prix
-  const [filterPrice, setfilterPrice ] = useState(false);
+  const [filterPrice, setFilterPrice] = useState('');
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} 
-        onFilterTextChange={setFilterText} 
-        onInStockOnlyChange={setInStockOnly} 
-        filterPrice={setFilterPrice}
-        />
-      <ProductTable 
-        products={products} 
+      <SearchBar
         filterText={filterText}
-        inStockOnly={inStockOnly} 
-         filterPrice={filterPrice}
-        />
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
+        onInStockOnlyChange={setInStockOnly}
+        filterPrice={filterPrice}
+        onFilterPriceChange={setFilterPrice}
+      />
+      <ProductTable
+        products={products}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        filterPrice={filterPrice}
+      />
     </div>
   );
 }
@@ -49,7 +50,7 @@ function ProductRow({ product }) {
   );
 }
 
-function ProductTable({ products, filterText, inStockOnly, filterPrice}) {
+function ProductTable({ products, filterText, inStockOnly, filterPrice }) {
   const rows = [];
   let lastCategory = null;
 
@@ -64,23 +65,30 @@ function ProductTable({ products, filterText, inStockOnly, filterPrice}) {
     if (inStockOnly && !product.stocked) {
       return;
     }
+
+    if (filterPrice && parseFloat(product.price.substring(1)) > parseFloat(filterPrice)) {
+  return;
+}
     if (product.category !== lastCategory) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category} 
-             price={product.price}
-          />
+          key={product.category}
+          price={product.price}
+        />
       );
     }
     rows.push(
       <ProductRow
         product={product}
-        key={product.name} 
+        key={product.name}
         price={product.price}
-        />
+      />
     );
     lastCategory = product.category;
+
+
+
   });
 
   return (
@@ -101,21 +109,22 @@ function SearchBar({
   inStockOnly,
   onFilterTextChange,
   onInStockOnlyChange,
-  filterPrice
+  filterPrice,
+  onFilterPriceChange
 }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="Search..." 
+      <input
+        type="text"
+        value={filterText} placeholder="Search..."
         onChange={(e) => onFilterTextChange(e.target.value)} />
-        <input  type="price" 
-        value={filterPrice} placeholder="Search..." 
-        onChange={(e) => filterPrice(e.target.value)} />
+      <input type="number"
+        value={filterPrice} placeholder="Prix max"
+        onChange={(e) => onFilterPriceChange(e.target.value)} />
       <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} 
+        <input
+          type="checkbox"
+          checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
         Only show products in stock
@@ -125,12 +134,12 @@ function SearchBar({
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+  { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
+  { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
+  { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+  { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
+  { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
 ];
 
 export default function App() {
