@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    color: white;
+	font-family: 'Source Code Pro', monospace;
+}
+
+.centrer{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 50px;
+    gap: 5em;
+}
+
+.pokemon {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+button {
+    padding: 50px;
+    border-radius: 50%;
+}
+
+
+
+
+
