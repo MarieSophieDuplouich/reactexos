@@ -4,18 +4,23 @@ import { useState } from 'react';
 
 export default function ColorClick() {
     const [color, setColor] = useState("blue");
-    const [textColor, setTextColor] = useState("green");
+  
 
     function handleClick() {
         setColor("pink");
-         setTextColor("green");
        
+    }
+    
+          const [textColor, setTextColor] = useState("green");
+    function handleClicktextcolor(){
+    
+                 setTextColor("red");
     }
 
     return (
         <>
     <button style={{ background: color, color:textColor }} onClick={handleClick}>
-      You pressed me {color} times
+      You pressed me {color} times 
     </button>
 
 
@@ -25,17 +30,17 @@ export default function ColorClick() {
     <section className="click">
     <div className="boxeun">
         <h3>backgroundColor</h3>
-        <button className='red' >Red</button>
-        <button className='green'>Green</button>
-        <button className='blue'>Blue</button>
+        <button onClick={handleClick} className='red' >Red</button>
+        <button  onClick={handleClick} className='green'>Green</button>
+        <button  onClick={handleClick} className='blue'>Blue</button>
 
         <h3>textColor</h3>
-         <button className='white' >White</button>
-        <button className='black' >Black</button>
-        <button className='red' >Red</button>
+         <button  onClick={ handleClicktextcolor} className='white' >White</button>
+        <button onClick={ handleClicktextcolor}className='black' >Black</button>
+        <button  onClick={ handleClicktextcolor}className='red' >Red</button>
     </div>
     
-    <div className="boxedeux">
+    <div className="boxedeux" style={{ background: color, color:textColor }}>
     <h3>Oh rage, ô désespoir</h3>
     <p>Oh rage, ô désespoir, que mon souffle se brise,
          Quand le jour s'efface et que l'âme s'afflige. 
