@@ -3,30 +3,36 @@
 import { useState } from 'react';
 
 export default function ColorClick() {
-    const [count, setCount] = useState(0);
+    const [color, setColor] = useState("blue");
+    const [textColor, setTextColor] = useState("green");
 
     function handleClick() {
-        setCount(count + 1);
+        setColor("pink");
+         setTextColor("green");
+       
     }
 
     return (
         <>
-    <button onClick={handleClick}>
-      You pressed me {count} times
+    <button style={{ background: color, color:textColor }} onClick={handleClick}>
+      You pressed me {color} times
     </button>
+
+
+
 
     <h2>ColorClick</h2>
     <section className="click">
     <div className="boxeun">
         <h3>backgroundColor</h3>
-        <button>Red</button>
-        <button>Green</button>
-        <button>Blue</button>
+        <button className='red' >Red</button>
+        <button className='green'>Green</button>
+        <button className='blue'>Blue</button>
 
         <h3>textColor</h3>
-         <button>White</button>
-        <button>Black</button>
-        <button>Red</button>
+         <button className='white' >White</button>
+        <button className='black' >Black</button>
+        <button className='red' >Red</button>
     </div>
     
     <div className="boxedeux">
