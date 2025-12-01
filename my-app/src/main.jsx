@@ -1,10 +1,21 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+import ReactDOM, { createRoot } from "react-dom/client";
+// import App from "./App";
+import {App} from './App.jsx';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+fetch("https://pokebuildapi.fr/api/v&/pokemon/limit/100")
+.then(res=>res.json())
+.then(pokemons=>{
+    ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode >
 
-root.render(<App/>);
+        <App pokemons={pokemons}/>
+    </React.StrictMode>   
+
+    );
+});
+
+
 
 
 
