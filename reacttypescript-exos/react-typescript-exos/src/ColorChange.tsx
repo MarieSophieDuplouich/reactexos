@@ -26,14 +26,11 @@ export default function ColorChange() {
             <section className="click">
                 <div className="boxeun">
                     <h3>backgroundColor</h3>
-                    <button onClick={() => setColor(couleurs[0])} className="red" >Red</button>
-                    <button onClick={() => setColor(couleurs[1])} className="green">Green</button>
-                    <button onClick={() => setColor(couleurs[2])} className="blue">Blue</button>
-
+                    {/* <input type="text" onSubmit={() => setColor(couleurs[color])}  /> */}
+                        <input type="text"  onChange={e => setColor(e.target.value)}  />
                     <h3>textColor</h3>
-                    <button onClick={() => setTextColor(coulours[0])} className='white' >White</button>
-                    <button onClick={() => setTextColor(coulours[1])} className='black' >Black</button>
-                    <button onClick={() => setTextColor(coulours[2])} className='red' >Red</button>
+                      {/* <input type="text" value={color} onSubmit={() => setTextColor(coulours[textColor])}/> */}
+                          <input type="text"  onChange={e => setTextColor(e.target.value)}  />
                 </div>
 
 
@@ -48,3 +45,4 @@ export default function ColorChange() {
         </>
     );
 }
+
