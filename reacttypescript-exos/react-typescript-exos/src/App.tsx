@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Clicker from './Clicker'
 import Chrono from './Chrono'
+import ColorClick from './ColorClick'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       </p>
       <Clicker/>
       <Chrono/>
+      <ColorClick/>
     </>
   )
 }
