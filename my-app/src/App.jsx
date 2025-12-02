@@ -34,21 +34,12 @@ function App({ pokemons}) {
   // };
 
   //pokemon recherche par points d'attaque suite
-const filteredPokemons = pokemons.filter(poke=> {
+const filteredPokemons = pokemons.filter(poke => {
   if(!rangeAttack) return true;
-
-  return parseInt(poke.stats.attack)>= parseInt(rangeAttack);
+   
+  return parseInt(poke.stats.attack) >= parseInt(rangeAttack);
 });
  //pokemon recherche par points d'attaque suite fin
-
-    rows.push(
-      <ProductRow
-        product={product}
-        key={product.name}
-        price={product.price}
-      />
-    );
-    lastCategory = product.category;
 
 
   return (
@@ -65,19 +56,16 @@ const filteredPokemons = pokemons.filter(poke=> {
       <Chronometre />
       <FilterableProductTable />
 
-
       <form>
-   
         <input type="number"
           value={rangeAttack} placeholder="filtrer par points d'attaque"
           onChange={(e) => onrangeAttack(e.target.value)} />
- 
       </form>
        
 
     
       <div className="pokemon-list">
-        {pokemons.map(poke => (
+        {filteredPokemons.map(poke => (
           <div key={poke.id} className="pokemon-card">
             <h3>{poke.name}</h3>
             <img src={poke.image} alt={poke.name} />
@@ -87,7 +75,7 @@ const filteredPokemons = pokemons.filter(poke=> {
           </div>
         ))}
       </div>
-   {filteredPokemons.length === 0 &&(
+   {filteredPokemons.length === 0 && (
     <p>Aucun Pokémon ne correspond à ce filtre.</p>
    )}
 
