@@ -1,4 +1,4 @@
-import { React, useState} from "react";
+import { React, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Clicker from "./Clicker";
 import Horloge from "./Horloge";
@@ -13,16 +13,20 @@ import FilterableProductTable from "./FilterableProductTable";
 // root.render(<App/>);
 
 
-function App ({pokemons}) {
-  
+function App({ pokemons}) {
+
   const nom = "Siri";
   const date = new Date();
   const datefr = new Intl.DateTimeFormat("fr-FR").format(date);
   // const str = date.getHours();
   const localTime = datefr.toString();
   const hourTime = date.getHours();
-  const minutes =date.getMinutes();
-  
+  const minutes = date.getMinutes();
+
+
+    //points d'attaque filtre pokemon
+  const [rangeAttack, onrangeAttack] = useState('');
+
   // const pokemon = {
   //     name:"Mew",
   //     image:"http://unsplash.it/100/200",
@@ -30,33 +34,43 @@ function App ({pokemons}) {
   // };
   return (
     <div className="centrer">
-  <h1>Hello, {nom} et nous sommes le {datefr} {hourTime}h {minutes}
-  </h1>
-  {/* <h2> {pokemon.name}</h2> */}
-     
-{/* <img className="pokemon" src={pokemon.image} alt={pokemon.name}/> 
-     <h3>{pokemon.pokeId}</h3> */}
-       <Clicker/>
-       <Horloge/>
-       <Billy/>
-       <Chronometre/>
-       <FilterableProductTable/>
+      <h1>Hello, {nom} et nous sommes le {datefr} {hourTime}h {minutes}
+      </h1>
+      {/* <h2> {pokemon.name}</h2> */}
 
-        <div className="pokemon-list">
+      {/* <img className="pokemon" src={pokemon.image} alt={pokemon.name}/> 
+     <h3>{pokemon.pokeId}</h3> */}
+      <Clicker />
+      <Horloge />
+      <Billy />
+      <Chronometre />
+      <FilterableProductTable />
+
+
+      <form>
+   
+        <input type="number"
+          value={rangeAttack} placeholder="filter par points d'attaque"
+          onChange={(e) => onrangeAttack(e.target.value)} />
+ 
+      </form>
+
+      <div className="pokemon-list">
         {pokemons.map(poke => (
           <div key={poke.id} className="pokemon-card">
             <h3>{poke.name}</h3>
             <img src={poke.image} alt={poke.name} />
             <p>ID : {poke.pokedexId}</p>
+            <p>points d'attaque : {poke.stats.attack}</p>
           </div>
         ))}
       </div>
     </div>
-  ) 
-  
+  )
 
-     
-  ;
+
+
+    ;
 }
 
 
