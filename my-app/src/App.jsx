@@ -32,6 +32,25 @@ function App({ pokemons}) {
   //     image:"http://unsplash.it/100/200",
   //     pokeId:151
   // };
+
+  //pokemon recherche par points d'attaque suite
+const filteredPokemons = pokemons.filter(poke=> {
+  if(!rangeAttack) return true;
+
+  return parseInt(poke.stats.attack)>= parseInt(rangeAttack);
+});
+ //pokemon recherche par points d'attaque suite fin
+
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name}
+        price={product.price}
+      />
+    );
+    lastCategory = product.category;
+
+
   return (
     <div className="centrer">
       <h1>Hello, {nom} et nous sommes le {datefr} {hourTime}h {minutes}
@@ -50,11 +69,13 @@ function App({ pokemons}) {
       <form>
    
         <input type="number"
-          value={rangeAttack} placeholder="filter par points d'attaque"
+          value={rangeAttack} placeholder="filtrer par points d'attaque"
           onChange={(e) => onrangeAttack(e.target.value)} />
  
       </form>
+       
 
+    
       <div className="pokemon-list">
         {pokemons.map(poke => (
           <div key={poke.id} className="pokemon-card">
@@ -62,15 +83,16 @@ function App({ pokemons}) {
             <img src={poke.image} alt={poke.name} />
             <p>ID : {poke.pokedexId}</p>
             <p>points d'attaque : {poke.stats.attack}</p>
+            <p>ça se passe ci-dessous le filtrage </p>
           </div>
         ))}
       </div>
+   {filteredPokemons.length === 0 &&(
+    <p>Aucun Pokémon ne correspond à ce filtre.</p>
+   )}
+
     </div>
-  )
-
-
-
-    ;
+  ) ;
 }
 
 
